@@ -5,19 +5,53 @@
 		name = 'kuman';
 		num = 55;
 	}
+
+	// first #, middle :, end /
+	let toggle = false;
+
+	// #each <Array> as <ArrayItem>
+	let fruits = ['Apple', 'Banana', 'Cherry', 'Orange', 'Mango'];
+	function deleteFruit() {
+		// 배열 렌더링이 갱신되려면 let을 통해 재할당시켜야 한다.
+		fruits = fruits.slice(1);
+	}
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<h2 class={num < 85 ? 'active' : ''}>
-		{num}
-	</h2>
-	<img src="" alt={name} />
-	<!-- input type="text" value={name} / -->
-	<input type="text" bind:value={name} />
-	<button on:click={assign}>
-		assign
-	</button>
+	<div>
+		<h1>Hello {name}!</h1>
+		<h2 class={num < 85 ? 'active' : ''}>
+			{num}
+		</h2>
+		<img src="" alt={name} />
+		<!-- input type="text" value={name} / -->
+		<input type="text" bind:value={name} />
+		<button on:click={assign}>
+			assign
+		</button>
+	</div>
+	
+	<div>
+		<button on:click={() => {toggle = !toggle}}>
+			Toggle
+		</button>
+		{#if toggle}
+			Hey I am here!
+		{:else}
+			...?
+		{/if}
+	</div>
+
+	<div>
+		<ul>
+			{#each fruits as fruit}
+				<li>{fruit}</li>
+			{/each}
+		</ul>
+		<button on:click={deleteFruit}>
+			Eat
+		</button>
+	</div>
 </main>
 
 <style>
