@@ -1,4 +1,6 @@
 <script>
+	//import { onMount } from 'svelte';
+
 	let name = 'koishi';
 	let num = 514;
 	function assign() {
@@ -15,6 +17,24 @@
 		// 배열 렌더링이 갱신되려면 let을 통해 재할당시켜야 한다.
 		fruits = fruits.slice(1);
 	}
+
+	let isRed = false;
+	/*
+	onMount(() => {
+		const box = document.querySelector('.box');
+		box.addEventListener('click', () => { isRed = !isRed; });
+	});
+	*/
+
+	function enter() {
+		name = 'enter';
+	}
+
+	function leave() {
+		name = 'leave';
+	}
+
+	let text = '';
 </script>
 
 <main>
@@ -32,7 +52,7 @@
 	</div>
 	
 	<div>
-		<button on:click={() => {toggle = !toggle}}>
+		<button on:click={() => {toggle = !toggle;}}>
 			Toggle
 		</button>
 		{#if toggle}
@@ -52,6 +72,34 @@
 			Eat
 		</button>
 	</div>
+
+	<div
+		class="box"
+		style="background-color: {isRed ? 'red' : 'greenyellow'}"
+		on:click={() => {isRed = !isRed;}}
+		on:mouseenter={enter}
+		on:mouseleave={leave}
+	>
+		Box!
+	</div>
+
+	<div>
+		<div>
+			{text}
+		</div>
+		<!-- input
+			type="text"
+			value={text}
+			on:input={(e) => {text = e.target.value;}}
+		/ -->
+		<input
+			type="text"
+			bind:value={text}
+		/>
+		<button on:click={() => {text = 'input koishi';}}>
+			asdf
+		</button>
+	</div>
 </main>
 
 <style>
@@ -61,5 +109,11 @@
 
 	.active {
 		color: blue;
+	}
+
+	.box {
+		width: 300px;
+		height: 150px;
+		background-color: greenyellow;
 	}
 </style>
