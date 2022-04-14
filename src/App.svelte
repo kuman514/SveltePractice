@@ -1,5 +1,6 @@
 <script>
 	//import { onMount } from 'svelte';
+	import Fruits from './Fruits.svelte';
 
 	let name = 'koishi';
 	let num = 514;
@@ -11,12 +12,15 @@
 	// first #, middle :, end /
 	let toggle = false;
 
+	/*
 	// #each <Array> as <ArrayItem>
 	let fruits = ['Apple', 'Banana', 'Cherry', 'Orange', 'Mango'];
 	function deleteFruit() {
 		// 배열 렌더링이 갱신되려면 let을 통해 재할당시켜야 한다.
 		fruits = fruits.slice(1);
 	}
+	*/
+	let appFruits = ['Apple', 'Banana', 'Cherry', 'Orange', 'Mango'];
 
 	let isRed = false;
 	/*
@@ -62,7 +66,7 @@
 		{/if}
 	</div>
 
-	<div>
+	<!-- div>
 		<ul>
 			{#each fruits as fruit}
 				<li>{fruit}</li>
@@ -71,7 +75,19 @@
 		<button on:click={deleteFruit}>
 			Eat
 		</button>
-	</div>
+	</div -->
+	<!-- Fruits
+		fruits={appFruits}
+	/ -->
+	<Fruits
+		fruits={appFruits}
+		reverse
+		slice="1, 4"
+	/>
+	
+	<!-- Fruits
+		{fruits}
+	/ -->
 
 	<div
 		class="box"
