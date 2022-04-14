@@ -1,6 +1,7 @@
 <script>
 	//import { onMount } from 'svelte';
 	import Fruits from './Fruits.svelte';
+	import Parent from './Parent.svelte';
 
 	let name = 'koishi';
 	let num = 514;
@@ -116,6 +117,10 @@
 			asdf
 		</button>
 	</div>
+
+	<Parent
+		nonStoreProp="nonStore"
+	/>
 </main>
 
 <style>
