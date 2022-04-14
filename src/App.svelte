@@ -3,12 +3,22 @@
 	import Fruits from './Fruits.svelte';
 	import Parent from './Parent.svelte';
 
+	import { store } from './store.js';
+
+	console.log(store);
+	console.log($store);
+
 	let name = 'koishi';
 	let num = 514;
 	function assign() {
 		name = 'kuman';
 		num = 55;
 	}
+
+	// Svelte Store 사용 시 Prop Drilling을 방지할 수 있다.
+	// Store Data를 얻으려면 스토어 변수 앞에 $를 붙여야 한다.
+	$store = name;
+	console.log($store);
 
 	// first #, middle :, end /
 	let toggle = false;

@@ -1,7 +1,8 @@
 <script>
+  import { store } from './store.js';
   export let nonStoreProp;
 </script>
 
 <div>
-  Child {nonStoreProp}
+  Child {nonStoreProp} {$store}
 </div>
